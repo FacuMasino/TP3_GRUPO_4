@@ -18,6 +18,28 @@ public class DNI {
 	public static boolean verificarDniInvalido(String nroDNI) throws DniInvalidoException {
 		// Recorrer cada caracter de la cadena nroDNI y verificar si es número
 		// utilizando la funcion esNumero()
-		return true;
-	}
+		
+		int ContadorInvalidos = 0;
+		
+		for (int i=0; i<nroDNI.length(); i++)
+		{
+			if (!esNumero(nroDNI.charAt(i))) {ContadorInvalidos ++;}
+		}
+		
+		if (ContadorInvalidos>0) {
+			
+			  DniInvalidoException  excDni  = new DniInvalidoException();
+			   throw excDni;
+		}
+		if (ContadorInvalidos == 0) {
+			return true;
+			  
+		}	
+		return false; 
+
 }
+
+	
+	
+}
+

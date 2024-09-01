@@ -6,7 +6,7 @@ public class DniInvalidoException extends RuntimeException{
 
 	@Override
 	public String getMessage() {
-		return "El DNI es inválido, asegurese de que solo contenga letras.";				
+		return "El DNI es inválido, asegurese de que solo contenga números.";				
 	}
 	
 }
