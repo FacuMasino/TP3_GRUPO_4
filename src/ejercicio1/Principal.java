@@ -1,5 +1,6 @@
 package ejercicio1;
 
+import java.io.IOException;
 
 public class Principal
 {
@@ -31,7 +32,7 @@ public class Principal
 				System.out.println("NO valido.");
 			}
 		}
-		catch (DniInvalidoException e)
+		catch (IOException e)
 		{
 			e.getMessage();
 			e.printStackTrace();
