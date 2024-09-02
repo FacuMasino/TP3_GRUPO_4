@@ -44,7 +44,6 @@ public class Archivo
 			escritura.close();
 			
 			return true;
-			
 		}
 		catch (IOException e)
 		{
@@ -56,7 +55,6 @@ public class Archivo
 	
 	public void escribirLetraPorLetra(String frase)
 	{
-		
 		try
 		{
 			FileWriter fw = new FileWriter(ruta, true);
@@ -85,7 +83,6 @@ public class Archivo
 			bfw.write(frase);
 			bfw.close();
 			fw.close();
-			
 		}
 		catch(IOException e)
 		{
