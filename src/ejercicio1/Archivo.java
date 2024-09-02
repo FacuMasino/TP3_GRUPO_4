@@ -61,7 +61,6 @@ public class Archivo
 			
 			for(int i = 0; i < frase.length(); i++)
 			{
-				
 				fw.write(frase.charAt(i));
 			}
 			
@@ -107,7 +106,6 @@ public class Archivo
 			}
 			
 			entrada.close();
-			
 		}
 		catch(IOException e)
 		{
