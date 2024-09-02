@@ -11,7 +11,7 @@ public class Persona implements Comparable<Persona>
 		
 	}
 
-	public Persona(String apellido, String nombre, String dni)
+	public Persona(String nombre, String apellido, String dni)
 	{
 		this.apellido = apellido;
 		this.nombre = nombre;
@@ -134,9 +134,9 @@ public class Persona implements Comparable<Persona>
 		
 		if(per.getApellido().compareTo(this.apellido) < 0)
 		{
-			return -1;
+			return 1;
 		}
 		
-		return 1;
+		return -1;
 	}
 }

@@ -141,6 +141,37 @@ public class Archivo
 		}
 	}
 	
+	public ArrayList<String> getLineas()
+	{
+		FileReader fr;
+		
+		try
+		{
+			fr = new FileReader(ruta);
+			BufferedReader bfr = new BufferedReader(fr);
+			String linea="";
+			ArrayList<String> lineas = new ArrayList<String>();
+			
+			while(linea != null)
+			{
+				linea = bfr.readLine();
+				if(linea != null && !linea.equals(""))
+				{
+					lineas.add(linea);					
+				}
+			}
+			
+			bfr.close();
+			fr.close();
+			return lineas;
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public String getRuta()
 	{
 		return ruta;
