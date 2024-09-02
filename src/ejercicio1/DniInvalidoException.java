@@ -1,7 +1,11 @@
 package ejercicio1;
 
-public class DniInvalidoException extends RuntimeException
+import java.io.IOException;
+
+public class DniInvalidoException extends IOException
 {
+	private static final long serialVersionUID = 1L;
+
 	public DniInvalidoException()
 	{
 		

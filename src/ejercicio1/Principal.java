@@ -16,5 +16,25 @@ public class Principal
 			archivo.crearArchivo("Personas.txt");
 			System.out.println("Archivo creado");
 		}
+		
+		Persona carlitos = new Persona("Carlos", "Berlinguieri", "1234prueba");
+		System.out.println(carlitos.toString());
+		
+		try
+		{
+			if (DNI.verificarDniInvalido(carlitos.getDni()))
+			{
+				System.out.println("Valido.");
+			}
+			else
+			{
+				System.out.println("NO valido.");
+			}
+		}
+		catch (DniInvalidoException e)
+		{
+			e.getMessage();
+			e.printStackTrace();
+		}
 	}
 }
