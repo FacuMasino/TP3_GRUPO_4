@@ -7,89 +7,103 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Archivo {
-
+public class Archivo
+{
 	private String ruta;
 
-	public Archivo() {
+	public Archivo()
+	{
 
 	}
 
-	public Archivo(String ruta) {
+	public Archivo(String ruta)
+	{
 		this.ruta = ruta;
 	}
 
-	public boolean existe(String ruta) {
-
+	public boolean existe(String ruta)
+	{
 		File archivo = new File(ruta);
-		if (archivo.exists()) {
+		
+		if (archivo.exists())
+		{
 			return true;
 		}
 
 		return false;
 	}
 	
-	public boolean crearArchivo(String ruta) {
-		
+	public boolean crearArchivo(String ruta)
+	{
 		FileWriter escritura;
 		
-		try {
+		try
+		{
 			escritura = new FileWriter(ruta, true);
 			escritura.write("");
 			escritura.close();
 			
 			return true;
 			
-		} catch (IOException e) {
-			
+		}
+		catch (IOException e)
+		{
 			e.printStackTrace();
 		}
 		
 		return false;
 	}
 	
-	public void escribirLetraPorLetra(String frase) {
+	public void escribirLetraPorLetra(String frase)
+	{
 		
-		try {
+		try
+		{
 			FileWriter fw = new FileWriter(ruta, true);
 			
-			for(int i = 0; i < frase.length(); i++) {
+			for(int i = 0; i < frase.length(); i++)
+			{
 				
 				fw.write(frase.charAt(i));
 			}
 			
 			fw.close();
 			
-		} catch(IOException e) {
-			
+		}
+		catch(IOException e)
+		{
 			e.printStackTrace();
 		}
 	}
 	
-	public void escribirLineas(String frase) {
-		
-		try {
+	public void escribirLineas(String frase)
+	{
+		try
+		{
 			FileWriter fw = new FileWriter(ruta, true);
 			BufferedWriter bfw = new BufferedWriter(fw);
 			bfw.write(frase);
 			bfw.close();
 			fw.close();
 			
-		} catch(IOException e) {
-			
+		}
+		catch(IOException e)
+		{
 			e.printStackTrace();
 		}
 	}
 	
-	public void leerLetraPorLetra() {
-		
+	public void leerLetraPorLetra()
+	{
 		FileReader entrada;
 		
-		try {
+		try
+		{
 			entrada = new FileReader(ruta);
 			int c = entrada.read();
-			while(c != -1) {
-				
+			
+			while(c != -1)
+			{
 				char letra = (char) c;
 				System.out.println(letra);
 				c = entrada.read();
@@ -97,43 +111,45 @@ public class Archivo {
 			
 			entrada.close();
 			
-		} catch(IOException e) {
-			
+		}
+		catch(IOException e)
+		{
 			e.printStackTrace();
 		}
 	}
 	
-	public void leerLineas() {
-		
+	public void leerLineas()
+	{
 		FileReader fr;
 		
-		try {
+		try
+		{
 			fr = new FileReader(ruta);
 			BufferedReader bfr = new BufferedReader(fr);
 			String linea = "";
 			
-			while(linea != null) {
-				
+			while(linea != null)
+			{
 				System.out.println(linea);
 				linea = bfr.readLine();
 			}
 			
 			bfr.close();
 			fr.close();
-			
-		} catch(IOException e) {
-			
+		}
+		catch(IOException e)
+		{
 			e.printStackTrace();
 		}
 	}
 	
-
-	public String getRuta() {
+	public String getRuta()
+	{
 		return ruta;
 	}
 
-	public void setRuta(String ruta) {
+	public void setRuta(String ruta)
+	{
 		this.ruta = ruta;
 	}
-
 }

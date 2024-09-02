@@ -1,45 +1,47 @@
 package ejercicio1;
 
-public class DNI {
-
-	public DNI() {
-		// TODO Auto-generated constructor stub
+public class DNI
+{
+	public DNI()
+	{
+		
 	}
 	
-	private static boolean esNumero(char c) {
-		// Según la tabla de códigos ASCII los números 0-9 están entre
-		// los códigos de caracter 48 y 57. Ver https://www.ascii-code.com/
-		if((int)c >= 48 && (int)c <= 57) {
+	// Los numeros 0-9 estan entre los codigos ASCII 48 y 57 (Ver https://www.ascii-code.com/)
+	private static boolean esNumero(char c)
+	{
+		if((int)c >= 48 && (int)c <= 57)
+		{
 			return true;
 		}
+
 		return false;
 	}
 	
-	public static boolean verificarDniInvalido(String nroDNI) throws DniInvalidoException {
-		// Recorrer cada caracter de la cadena nroDNI y verificar si es número
-		// utilizando la funcion esNumero()
-		
+	// Recorre cada caracter de nroDNI y verifica si es numero
+	public static boolean verificarDniInvalido(String nroDNI) throws DniInvalidoException
+	{		
 		int ContadorInvalidos = 0;
 		
 		for (int i=0; i<nroDNI.length(); i++)
 		{
-			if (!esNumero(nroDNI.charAt(i))) {ContadorInvalidos ++;}
+			if (!esNumero(nroDNI.charAt(i)))
+			{
+				ContadorInvalidos ++;
+			}
 		}
 		
-		if (ContadorInvalidos>0) {
-			
-			  DniInvalidoException  excDni  = new DniInvalidoException();
-			   throw excDni;
+		if (ContadorInvalidos>0)
+		{
+			DniInvalidoException excDni = new DniInvalidoException();
+			throw excDni;
 		}
-		if (ContadorInvalidos == 0) {
+		
+		if (ContadorInvalidos == 0)
+		{
 			return true;
-			  
-		}	
+		}
+		
 		return false; 
-
+	}
 }
-
-	
-	
-}
-
