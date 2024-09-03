@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Archivo
 {
 	private String ruta;
-	private static int cantidadDeRegistros;
+	private int cantidadDeRegistros;
 
 	public Archivo()
 	{
@@ -26,14 +26,14 @@ public class Archivo
 
 	public boolean existe(String ruta)
 	{
-		File archivo = new File(ruta);
-		
-		if (archivo.exists())
-		{
-			return true;
-		}
-
-		return false;
+		File archivo = new File(ruta);		
+		return archivo.exists();
+	}
+	
+	public boolean existe()
+	{
+		File archivo = new File(ruta);		
+		return archivo.exists();
 	}
 	
 	public boolean crearArchivo(String ruta)
@@ -56,26 +56,6 @@ public class Archivo
 		return false;
 	}
 	
-	public void escribirLetraPorLetra(String frase)
-	{
-		try
-		{
-			FileWriter fw = new FileWriter(ruta, true);
-			
-			for(int i = 0; i < frase.length(); i++)
-			{
-				fw.write(frase.charAt(i));
-			}
-			
-			fw.close();
-			
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
-	
 	public void escribirLineas(String frase)
 	{
 		try
@@ -85,55 +65,6 @@ public class Archivo
 			bfw.write(frase);
 			bfw.close();
 			fw.close();
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
-	
-	public void leerLetraPorLetra()
-	{
-		FileReader entrada;
-		
-		try
-		{
-			entrada = new FileReader(ruta);
-			int c = entrada.read();
-			
-			while(c != -1)
-			{
-				char letra = (char) c;
-				System.out.println(letra);
-				c = entrada.read();
-			}
-			
-			entrada.close();
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
-	
-	public void leerLineas()
-	{
-		FileReader fr;
-		
-		try
-		{
-			fr = new FileReader(ruta);
-			BufferedReader bfr = new BufferedReader(fr);
-			String linea = "";
-			
-			while(linea != null)
-			{
-				System.out.println(linea);
-				linea = bfr.readLine();
-			}
-			
-			bfr.close();
-			fr.close();
 		}
 		catch(IOException e)
 		{
@@ -192,6 +123,8 @@ public class Archivo
 	{
 		FileReader fr;
 		
+		cantidadDeRegistros = 0;
+		
 		try
 		{
 			fr = new FileReader(ruta);
@@ -212,6 +145,17 @@ public class Archivo
 			e.printStackTrace();
 		}
 	}
+
+	private Persona crearPersonaLinea(String strPersona) {
+		String[] arrDatos;
+		if(strPersona != null && !strPersona.equals("")) {
+			arrDatos = strPersona.split("-");
+			if(arrDatos.length == 3) {
+				return new Persona(arrDatos[0], arrDatos[1], arrDatos[2]);
+			}
+		}
+		return null;
+	}
 	
 	// Lista todas las personas, sin filtrar repetidos ni invalidos
 	public ArrayList<Persona> listarGentes()
@@ -230,16 +174,8 @@ public class Archivo
 			
 			while(linea != null)
 			{
-				String nombre = "";
-				String apellido = "";
-				String dinii = "";
-				
-				nombre = readCSVdata(0, linea);
-				apellido = readCSVdata(1, linea);
-				dinii = readCSVdata(2, linea);
-
-				Persona persona = new Persona(nombre, apellido, dinii);
-				gentes.add(persona);
+				Persona auxPersona = crearPersonaLinea(linea);
+				if(auxPersona != null) gentes.add(auxPersona);
 				
 				linea = bfr.readLine();
 			}
