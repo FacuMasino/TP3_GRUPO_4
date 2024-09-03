@@ -2,6 +2,8 @@ package ejercicio1;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.TreeSet;
 
 public class ManagerPersonas {
@@ -39,6 +41,23 @@ public class ManagerPersonas {
 		}
 		
 		return listaFiltrada;
+	}
+	
+	public void resultado() 
+	{	
+		Set<Persona> listaPersonas = this.getListaPersonas();
+		Archivo ar = new Archivo("Resultado.txt");
+		String linea;
+		
+		ar.pisarArchivo(ar.getRuta());
+		
+		Iterator<Persona> iterator = listaPersonas.iterator();
+			while(iterator.hasNext())
+			{
+				Persona per = iterator.next();
+				linea = per.getApellido() + "-" + per.getNombre() + "-" + per.getDni() + "\n";
+				ar.escribirLineas(linea);
+			}
 	}
 	
 	public void mostrarPersonas() {

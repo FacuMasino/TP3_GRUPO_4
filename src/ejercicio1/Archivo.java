@@ -56,6 +56,26 @@ public class Archivo
 		return false;
 	}
 	
+	public boolean pisarArchivo(String ruta)
+	{
+		FileWriter escritura;
+		
+		try
+		{
+			escritura = new FileWriter(ruta, false);
+			escritura.write("");
+			escritura.close();
+			
+			return true;
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
 	public void escribirLineas(String frase)
 	{
 		try
@@ -71,6 +91,7 @@ public class Archivo
 			e.printStackTrace();
 		}
 	}
+	
 	
 	public ArrayList<String> getLineas()
 	{
