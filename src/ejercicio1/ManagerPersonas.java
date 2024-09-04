@@ -43,7 +43,7 @@ public class ManagerPersonas {
 		return listaFiltrada;
 	}
 	
-	public void resultado() 
+	public boolean guardarResultado() 
 	{	
 		Set<Persona> listaPersonas = this.getListaPersonas();
 		Archivo ar = new Archivo("Resultado.txt");
@@ -58,7 +58,16 @@ public class ManagerPersonas {
 				linea = per.getApellido() + "-" + per.getNombre() + "-" + per.getDni() + "\n";
 				ar.escribirLineas(linea);
 			}
+			
+			if (ar.existe() && ar.getCantidadDeRegistros() >0) 
+			{
+				return true;
+			}
+			{
+				return false;
+			}
 	}
+			
 	
 	public void mostrarPersonas() {
 		TreeSet<Persona> personas = new TreeSet<Persona>();
